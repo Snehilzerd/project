@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="song player">
+<meta name="description" content="This is a song player.">
+
+<title>Music Player</title>
+
+<link rel="icon" href="static/assets/favicon.png">
+<link rel="stylesheet" href="static/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+<body onload="onLoad()">
+
+<video id="bg-video" class="bg-video" autoplay muted loop><source></video>
+
+<section class="main-container">
+
+<div class="container">
+    <div class="song-info">
+        <div class="thumbnail-cnt">
+            <img id="thumbnail" class="thumbnail anm-paused" alt="Thumbnail">
+        </div>
+
+        <div class="song-details">
+            <h1 id="song-name" class="song-name">--</h1>
+            <p id="song-makers" class="song-makers">-- | --</p>
+        </div>
+    </div>
+
+    <div class="song-manager">
+        <div class="song-controls">
+            <audio id="song" preload="metadata"></audio>
+
+            <div class="song-time-cnt">
+                <div id="song-current-time" class="song-current-time">--:--</div>
+                <div class="time-slider-cnt">
+                    <input id="time-slider" class="time-slider" type="range" min="0" max="0" value="0" onclick="document.getElementById('static/assets/song').currentTime = this.value">
+                </div>
+                <div id="song-duration" class="song-duration">--:--</div>
+            </div>
+
+            <div class="song-actions-cnt">
+                <button id="shuffle-repeat-toggler" class="song-actions" onclick="toggleShuffleRepeat()"><i class="bi bi-shuffle"></i></button>
+
+                <button id="prev-song-btn" class="song-actions" onclick="previousSong()"><i class="bi bi-skip-backward-fill"></i></button>
+
+                <button id="play-pause-btn" class="song-actions" onclick="togglePlayPause()"><i class="bi bi-play-fill"></i></i></button>
+
+                <button id="next-song-btn" class="song-actions" onclick="nextSong()"><i class="bi bi-skip-forward-fill"></i></button>
+
+                <button id="songs-list-btn" class="song-actions" onclick="toggleSongsList()"><i class="bi bi-music-note-list"></i></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="songs-list" class="songs-list">
+    <button class="button-for-song" onclick="changeSong('song1.mp3','Artist 1','VNCM',0)">
+        <h1 id="song-0">Song 1 </h1>
+        Artist 1
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('song2.mp3','Artist 2','VNCM',1)">
+        <h1 id="song-1">Song 2 </h1>
+        Artist 2
+    </button>
+   
+
+<button class="button-for-song" onclick="changeSong('song3.mp3','Artist 3','VNCM',2)">
+    <h1 id="song-2">Song 3</h1>
+    Artist 3
+</button>
+
+<button class="button-for-song" onclick="changeSong('song4.mp3','Artist 4','VNCM',3)">
+    <h1 id="song-3">Song 4</h1>
+    Artist 4
+</button>
+
+<button class="button-for-song" onclick="changeSong('song5.mp3','Artist 5','VNCM',4)">
+    <h1 id="song-4">Song 5</h1>
+    Artist 5
+</button>
+
+<button class="button-for-song" onclick="changeSong('song6.mp3','Artist 6','VNCM',5)">
+    <h1 id="song-5">Song 6</h1>
+    Artist 6
+</button>
+
+<button class="button-for-song" onclick="changeSong('song7.mp3','Artist 7','VNCM',6)">
+    <h1 id="song-6">Song 7</h1>
+    Artist 7
+</button>
+
+<button class="button-for-song" onclick="changeSong('song8.mp3','Artist 8','VNCM',7)">
+    <h1 id="song-7">Song 8</h1>
+    Artist 8
+</button>
+
+    <button class="button-for-song" onclick="changeSong('song9.mp3','Artist 9','VNCM',8)">
+        <h1 id="song-8">Song 9</h1>
+        Artist 9
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song10.mp3','Artist 10','VNCM',9)">
+        <h1 id="song-9">Song 10</h1>
+        Artist 10
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song11.mp3','Artist 11','VNCM',10)">
+        <h1 id="song-10">Song 11</h1>
+        Artist 11
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song12.mp3','Artist 12','VNCM',11)">
+        <h1 id="song-11">Song 12</h1>
+        Artist 12
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song13.mp3','Artist 13','VNCM',12)">
+        <h1 id="song-12">Song 13</h1>
+        Artist 13
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song14.mp3','Artist 14','VNCM',13)">
+        <h1 id="song-13">Song 14</h1>
+        Artist 14
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song15.mp3','Artist 15','VNCM',14)">
+        <h1 id="song-14">Song 15</h1>
+        Artist 15
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song16.mp3','Artist 16','VNCM',15)">
+        <h1 id="song-15">Song 16</h1>
+        Artist 16
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song17.mp3','Artist 17','VNCM',16)">
+        <h1 id="song-16">Song 17</h1>
+        Artist 17
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song18.mp3','Artist 18','VNCM',17)">
+        <h1 id="song-17">Song 18</h1>
+        Artist 18
+    </button>
+<div id="songs-list" class="songs-list">
+    <!-- Buttons for artists 9 to 18 (as previously provided) -->
+
+    <button class="button-for-song" onclick="changeSong('song19.mp3','Artist 19','VNCM',18)">
+        <h1 id="song-18">Song 19</h1>
+        Artist 19
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song20.mp3','Artist 20','VNCM',19)">
+        <h1 id="song-19">Song 20</h1>
+        Artist 20
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song21.mp3','Artist 21','VNCM',20)">
+        <h1 id="song-20">Song 21</h1>
+        Artist 21
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song22.mp3','Artist 22','VNCM',21)">
+        <h1 id="song-21">Song 22</h1>
+        Artist 22
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song23.mp3','Artist 23','VNCM',22)">
+        <h1 id="song-22">Song 23</h1>
+        Artist 23
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song24.mp3','Artist 24','VNCM',23)">
+        <h1 id="song-23">Song 24</h1>
+        Artist 24
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song25.mp3','Artist 25','VNCM',24)">
+        <h1 id="song-24">Song 25</h1>
+        Artist 25
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song26.mp3','Artist 26','VNCM',25)">
+        <h1 id="song-25">Song 26</h1>
+        Artist 26
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song27.mp3','Artist 27','VNCM',26)">
+        <h1 id="song-26">Song 27</h1>
+        Artist 27
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song28.mp3','Artist 28','VNCM',27)">
+        <h1 id="song-27">Song 28</h1>
+        Artist 28
+    </button>
+ 
+
+    <button class="button-for-song" onclick="changeSong('song29.mp3','Artist 29','VNCM',28)">
+        <h1 id="song-28">Song 29</h1>
+        Artist 29
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song30.mp3','Artist 30','VNCM',29)">
+        <h1 id="song-29">Song 30</h1>
+        Artist 30
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song31.mp3','Artist 31','VNCM',30)">
+        <h1 id="song-30">Song 31</h1>
+        Artist 31
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song32.mp3','Artist 32','VNCM',31)">
+        <h1 id="song-31">Song 32</h1>
+        Artist 32
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song33.mp3','Artist 33','VNCM',32)">
+        <h1 id="song-32">Song 33</h1>
+        Artist 33
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song34.mp3','Artist 34','VNCM',33)">
+        <h1 id="song-33">Song 34</h1>
+        Artist 34
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song35.mp3','Artist 35','VNCM',34)">
+        <h1 id="song-34">Song 35</h1>
+        Artist 35
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song36.mp3','Artist 36','VNCM',35)">
+        <h1 id="song-35">Song 36</h1>
+        Artist 36
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song37.mp3','Artist 37','VNCM',36)">
+        <h1 id="song-36">Song 37</h1>
+        Artist 37
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song38.mp3','Artist 38','VNCM',37)">
+        <h1 id="song-37">Song 38</h1>
+        Artist 38
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song39.mp3','Artist 39','VNCM',38)">
+        <h1 id="song-38">Song 39</h1>
+        Artist 39
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song40.mp3','Artist 40','VNCM',39)">
+        <h1 id="song-39">Song 40</h1>
+        Artist 40
+    </button>
+
+
+
+    <button class="button-for-song" onclick="changeSong('song41.mp3','Artist 41','VNCM',40)">
+        <h1 id="song-40">Song 41</h1>
+        Artist 41
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song42.mp3','Artist 42','VNCM',41)">
+        <h1 id="song-41">Song 42</h1>
+        Artist 42
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song43.mp3','Artist 43','VNCM',42)">
+        <h1 id="song-42">Song 43</h1>
+        Artist 43
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song44.mp3','Artist 44','VNCM',43)">
+        <h1 id="song-43">Song 44</h1>
+        Artist 44
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song45.mp3','Artist 45','VNCM',44)">
+        <h1 id="song-44">Song 45</h1>
+        Artist 45
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song46.mp3','Artist 46','VNCM',45)">
+        <h1 id="song-45">Song 46</h1>
+        Artist 46
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song47.mp3','Artist 47','VNCM',46)">
+        <h1 id="song-46">Song 47</h1>
+        Artist 47
+    </button>
+
+    <button class="button-for-song" onclick="changeSong('song48.mp3','Artist 48','VNCM',47)">
+        <h1 id="song-47">Song 48</h1>
+        Artist 48
+    </button>
+
+
+</div>
+
+
+    
+   
+
+    <!-- 
+        Syntax:
+        <button class="button-for-song" onclick="changeSong('SONG_NAME','ARTIST','ALBUM',BUTTON_NUMBER)">
+            <h1 id="song-">SONG_NAME</h1>
+            ARTIST | ALBUM
+        </button>
+
+        -------------------------------------------------------------
+
+        If you want to set thumbnail according to song, then follow syntax given below:
+        <button class="button-for-song" onclick="changeSong('THUMBNAIL_IMAGE_NAME','SONG_NAME','ARTIST','ALBUM',BUTTON_NUMBER)">
+            <h1 id="song-">SONG_NAME</h1>
+            ARTIST | ALBUM
+        </button>
+
+        (THUMBNAIL_IMAGE_NAME -> without extension)
+     -->
+</div>
+
+</section>
+
+<script src="static/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</body>
+</html>
